@@ -23,4 +23,4 @@ steps:
     azureSubscription: 'Ps-ae-dev-test-SC'
     appType: 'functionAppLinux'
     appName: 'uyrtdfliopymlh'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)'
