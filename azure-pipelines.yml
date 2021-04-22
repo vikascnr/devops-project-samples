@@ -11,25 +11,25 @@ pool:
 
 steps:
 
-# - task: AzureFunctionApp@1
-#   inputs:
-#     azureSubscription: 'Ps-ae-dev-test-SC'
-#     appType: 'functionAppLinux'
-#     appName: 'uyrtdfliopymlh'
-#     package: '$(System.DefaultWorkingDirectory)'
-
-- task: DotNetCoreCLI@2
+- task: AzureFunctionApp@1
   inputs:
-    command: 'publish'
-    projects: '*.csproj'
-    arguments: '--configuration Release --output publish_output'
+    azureSubscription: 'Ps-ae-dev-test-SC'
+    appType: 'functionAppLinux'
+    appName: 'uyrtdfliopymlh'
+    package: '$(System.DefaultWorkingDirectory)'
+
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'publish'
+#     projects: '*.csproj'
+#     arguments: '--configuration Release --output publish_output'
 
 
 
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output"
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
     includeRootFolder: false
     archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 
@@ -38,6 +38,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+
 
 
 
