@@ -7,29 +7,28 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: Azure Pipelines
 
 steps:
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--output $(Build.BinariesDirectory)/publish_output --configusation release'
+    projects: 'devops-project-samples/*.csproj'
+    arguments: '--output publish_output --configuration Release'
+
+
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)/publish_output'
+    rootFolderOrFile: 'publish_output/'
     includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    PathtoPublish: 'publish.Artifact:drop'
+
 
 
 # - task: AzureFunctionApp@1
@@ -38,3 +37,4 @@ steps:
 #     appType: 'functionAppLinux'
 #     appName: 'uyrtdfliopymlh'
 #     package: '$(System.DefaultWorkingDirectory)'
+
