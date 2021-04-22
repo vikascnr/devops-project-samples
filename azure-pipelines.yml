@@ -11,12 +11,12 @@ pool:
 
 steps:
 
-- task: AzureFunctionApp@1
-  inputs:
-    azureSubscription: 'Ps-ae-dev-test-SC'
-    appType: 'functionAppLinux'
-    appName: 'uyrtdfliopymlh'
-    package: '$(System.DefaultWorkingDirectory)'
+# - task: AzureFunctionApp@1
+#   inputs:
+#     azureSubscription: 'Ps-ae-dev-test-SC'
+#     appType: 'functionAppLinux'
+#     appName: 'uyrtdfliopymlh'
+#     package: '$(System.DefaultWorkingDirectory)'
 
 - script: |
     dotnet restore
