@@ -14,7 +14,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'devops-project-samples/dotnet/*.csproj'
+    projects: 'devops-project-samples/*.csproj'
     arguments: '--output publish_output --configuration Release'
 
 
