@@ -18,11 +18,6 @@ steps:
 #     appName: 'uyrtdfliopymlh'
 #     package: '$(System.DefaultWorkingDirectory)'
 
-- script: |
-    dotnet restore
-    dotnet build --configuration Release
-
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
